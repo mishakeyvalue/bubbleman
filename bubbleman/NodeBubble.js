@@ -19,13 +19,14 @@ class NodeBubble{
         this._src = path.join(this._cage,"_src");
  
         // setting up this bubble        
-        this.package_json =  this._inflateBubble();
+        this._inflateBubble();
     }
 
     _inflateBubble(){
         this._ensureCageExists();
         this._gitClone();
-        return this._get_package_json();        
+        this.package_json =  this._get_package_json();        
+        this._restore();
     };
 
     _ensureCageExists(){
@@ -41,7 +42,22 @@ class NodeBubble{
         };
         
     };
-
+    _restore(){
+        for(let dependency in this.package_json.dependencies){
+            let command = `npm install ${dependency} ${this._src}`;
+            let callback = this._restoreCallback.bind(this);
+            exec(command, callback);
+        }
+      //  exec(command, callback)
+    };
+    _restoreCallback(error, stdout, stderr){
+        if (error) {
+            console.error(`******************************exec error: ${error}`);
+            return;
+        }
+        console.log(`stdout: ${stdout}`);
+        console.log(`stderr: ${stderr}`);
+    }
     _gitClone(){
         let command = `git clone ${this.GitUri} ${this._src}`;
         let callback = this._gitCloneCallback.bind(this);
@@ -49,8 +65,8 @@ class NodeBubble{
     };
     _gitCloneCallback(error, stdout, stderr){
         if (error) {
-        console.error(`exec error: ${error}`);
-        console.error('AHTUNG!!1');
+        console.error(`******************************exec error: ${error}`);
+        console.log('********************************Pulling...')
             this._gitPull();
             return;
         }
@@ -65,9 +81,8 @@ class NodeBubble{
 
     _gitPullCallback(error, stdout, stderr){
         if (error) {
-        console.error(`exec error: ${error}`);
-        console.error('AHTUNG!!1');
-            this._
+            console.error(`exec error: ${error}`);
+            console.error('******AHTUNG!!1*******_gitPullCallback');            
             return;
         }
         console.log(`stdout: ${stdout}`);
@@ -79,13 +94,28 @@ class NodeBubble{
     }
 
     Deploy(){
-        exec('dir', function(err, stdout, stderr){
-            console.log(stdout)
-        })
-    }
+        let pathToMain = path.join(this._src, this.package_json.main)
+        let command = `pm2 start ${pathToMain} --watch`;
+        let callback = this._deployCallback.bind(this);
+        exec(command, callback);
+    };
+
+    
+    _deployCallback(error, stdout, stderr){
+        if (error) {
+        console.error(`exec error: ${error}`);
+        console.error('AHTUNG!!1');
+
+            return;
+        }
+        console.log(`stdout: ${stdout}`);
+        console.log(`stderr: ${stderr}`);
+    };
+    
 }
 
 
 
 
 let bb = new NodeBubble('https://github.com/mitutee/node_Panel.git', 'test');
+bb.Deploy();

@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/mitutee/bubbleman/issues"
   },
-  "homepage": "https://github.com/mitutee/bubbleman#readme"
+  "homepage": "https://github.com/mitutee/bubbleman#readme",
+  "dependencies": {
+    "mongoose": "^4.9.4"
+  }
 }
