@@ -52,11 +52,13 @@ class NodeBubble{
     };
     _restoreCallback(error, stdout, stderr){
         if (error) {
-            console.error(`******************************exec error: ${error}`);
+           // console.error(`******************************exec error: ${error}`);
             return;
         }
-        console.log(`stdout: ${stdout}`);
-        console.log(`stderr: ${stderr}`);
+        console.log("RESOTRE CALL--------------------------------------------------");
+        
+      //  console.log(`stdout: ${stdout}`);
+       // console.log(`stderr: ${stderr}`);
     }
     _gitClone(){
         let command = `git clone ${this.GitUri} ${this._src}`;
@@ -65,13 +67,14 @@ class NodeBubble{
     };
     _gitCloneCallback(error, stdout, stderr){
         if (error) {
-        console.error(`******************************exec error: ${error}`);
-        console.log('********************************Pulling...')
+     //   console.error(`******************************exec error: ${error}`);
+       // console.log('********************************Pulling...')
             this._gitPull();
             return;
         }
-        console.log(`stdout: ${stdout}`);
-        console.log(`stderr: ${stderr}`);
+        console.log("GIT CLONE CALL--------------------------------------------------");
+        //console.log(`stdout: ${stdout}`);
+        //console.log(`stderr: ${stderr}`);
     };
     _gitPull(){
         let command = `git --work-tree=${this._src} --git-dir=${this._src}/.git pull origin master`;
@@ -81,12 +84,14 @@ class NodeBubble{
 
     _gitPullCallback(error, stdout, stderr){
         if (error) {
-            console.error(`exec error: ${error}`);
-            console.error('******AHTUNG!!1*******_gitPullCallback');            
+       //     console.error(`exec error: ${error}`);
+     //       console.error('******AHTUNG!!1*******_gitPullCallback');            
             return;
         }
-        console.log(`stdout: ${stdout}`);
-        console.log(`stderr: ${stderr}`);
+        console.log("GIT PULL CALL--------------------------------------------------");
+        
+       // console.log(`stdout: ${stdout}`);
+       // console.log(`stderr: ${stderr}`);
     };
     _get_package_json(){
         let p = path.join(this._src, 'package.json');
@@ -103,13 +108,15 @@ class NodeBubble{
     
     _deployCallback(error, stdout, stderr){
         if (error) {
-        console.error(`exec error: ${error}`);
-        console.error('AHTUNG!!1');
+      //  console.error(`exec error: ${error}`);
+      //  console.error('AHTUNG!!1');
 
             return;
         }
-        console.log(`stdout: ${stdout}`);
-        console.log(`stderr: ${stderr}`);
+        console.log("DEPLOY CALL--------------------------------------------------");
+        
+    //    console.log(`stdout: ${stdout}`);
+     //   console.log(`stderr: ${stderr}`);
     };
     
 }
