@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/mitutee/bubbleman#readme",
   "dependencies": {
-    "mongoose": "^4.9.4"
+    "mongoose": "^4.9.4",
+    "nodemon": "^1.11.0"
   }
 }

@@ -165,6 +165,5 @@ class NodeBubble{
 
 
 
-let bb = new NodeBubble('https://github.com/mitutee/node_Panel.git', 'test');
-
-console.log(JSON.stringify(bb))
+let BUBBLEMAN = new NodeBubble('https://github.com/mitutee/bubbleman.git', 'bubbleman');
+module.exports = NodeBubble;
