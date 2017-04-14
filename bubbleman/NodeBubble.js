@@ -144,7 +144,15 @@ class NodeBubble{
         pm2.stop(this.main)
     }
 
-    
+
+
+    IsRunning(){
+        //return pm2.
+    }
+
+    Reload(){
+        return new NodeBubble(this.GitUri, this.BubbleName);
+    };
     _deployCallback(error, stdout, stderr){
         if (error) {
       //  console.error(`exec error: ${error}`);
@@ -165,5 +173,5 @@ class NodeBubble{
 
 
 
-let BUBBLEMAN = new NodeBubble('https://github.com/mitutee/bubbleman.git', 'bubbleman');
+//let BUBBLEMAN = new NodeBubble('https://github.com/mitutee/bubbleman.git', 'bubbleman');
 module.exports = NodeBubble;
