@@ -1,8 +1,7 @@
-var http        = require("http"),
-    terminal    = require("web-terminal");
+var http = require("http")
 const express = require('express');
 const bubbleController = require('./controllers/bubbleController');
-    
+
 
 let app = express();
 
