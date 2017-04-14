@@ -5,7 +5,8 @@ const fs        = require('fs'),
       _PLATFORM = require('os').platform(),
       spawn     = require('child_process').spawn,
       exec      = require('child_process').exec,
-      events    = require('events')
+      events    = require('events'),
+      pm2       = require('pm2')
 
 
 class NodeBubble{
@@ -34,6 +35,7 @@ class NodeBubble{
     sourcedHandler(){
         // Job after downloading source code
         this.package_json =  this._get_package_json();
+        this.main = path.join(this._src, this.package_json.main);
         this._stringifyBubble();
         this._restore();                        
     };
@@ -132,12 +134,15 @@ class NodeBubble{
         fs.writeFileSync(p, JSON.stringify(this));
     }
 // ************    ************
-    Deploy(){
-        let pathToMain = path.join(this._src, this.package_json.main)
-        let command = `pm2 start ${pathToMain} --watch`;
-        let callback = this._deployCallback.bind(this);
-        exec(command, callback);
+    start(){
+          pm2.start({
+            script    :this.main         // Script to be run
+
+            });
     };
+    Stop(){
+        pm2.stop(this.main)
+    }
 
     
     _deployCallback(error, stdout, stderr){
@@ -152,6 +157,8 @@ class NodeBubble{
     //    console.log(`stdout: ${stdout}`);
      //   console.log(`stderr: ${stderr}`);
     };
+
+
     
 }
 
