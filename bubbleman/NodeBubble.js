@@ -152,8 +152,13 @@ class NodeBubble {
 
 
 
-    IsRunning() {
-        return execSync(`systemctl is-active _bubble0${this.main}`, { encoding: 'utf8' });
+    get IsRunning() {
+        try {
+            execSync(`systemctl is-active _bubble0${this.main}`);
+            return true;
+        } catch (e) {
+            return false;
+        }
     }
 
     Reload() {
@@ -165,7 +170,9 @@ class NodeBubble {
 
 }
 
+function selfAutoDeploy() {
 
+}
 
 
 //let BUBBLEMAN = new NodeBubble('https://github.com/mitutee/bubbleman.git', 'bubbleman');
