@@ -1,25 +1,25 @@
 {
-  "name": "bubbleman",
-  "version": "1.0.0",
-  "description": "lightweight cloud",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mitutee/bubbleman.git"
-  },
-  "author": "mitutee",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mitutee/bubbleman/issues"
-  },
-  "homepage": "https://github.com/mitutee/bubbleman#readme",
-  "dependencies": {
-    "ejs": "^2.5.6",
-    "express": "^4.15.2",
-    "mongoose": "^4.9.4",
-    "nodemon": "^1.11.0"
-  }
+    "name": "bubbleman",
+    "version": "1.0.0",
+    "description": "lightweight cloud",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mitutee/bubbleman.git"
+    },
+    "author": "mitutee",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/mitutee/bubbleman/issues"
+    },
+    "homepage": "https://github.com/mitutee/bubbleman#readme",
+    "dependencies": {
+        "ejs": "^2.5.6",
+        "express": "^4.15.2",
+        "mongoose": "^4.9.4",
+        "nodemon": "^1.11.0"
+    }
 }
