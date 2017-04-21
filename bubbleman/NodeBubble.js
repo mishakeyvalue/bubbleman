@@ -170,9 +170,8 @@ class NodeBubble {
 
 }
 
-function selfAutoDeploy() {
 
-}
+
 
 
 //let BUBBLEMAN = new NodeBubble('https://github.com/mitutee/bubbleman.git', 'bubbleman');

@@ -10,9 +10,28 @@ module.exports = function(app) {
         });
     })
 
-    app.get('/webhook', function(req, res) {
+    app.post('/webhook', function(req, res) {
         console.log(req.body)
+        reloadSelf();
         res.end();
     })
 
 };
+
+
+let reloadSelf = function() {
+    let command = `git --work-tree=${__dirname} --git-dir=${__dirname}/.git pull origin master`;
+    try {
+        execSync(command);
+    } catch (e) {
+        console.log(e)
+    }
+};
+
+let setAutolaunchSelf = function() {
+    let config = `[Unit]\nDescription=Test\n\
+        [Service]\nType=simple\n\
+        ExecStart=${NODE_PATH} ${__filename}/dashboard/app.js\nRestart=always`;
+
+    fs.writeFileSync(`/etc/systemd/system/_bubbleman`, config);
+}

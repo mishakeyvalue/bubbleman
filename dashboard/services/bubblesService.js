@@ -19,6 +19,9 @@ module.exports.Add = function(repo, name) {
 module.exports.Delete = function() {
 
 };
+
+module.exports.
+
 /**
  * Looks throgh saved into json bubbles, restores them and pushes into in-memory collection
  * (Called just once);
