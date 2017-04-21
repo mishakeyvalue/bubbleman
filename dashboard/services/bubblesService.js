@@ -1,6 +1,9 @@
 const fs = require('fs');
 const path = require('path');
-const NodeBubble = require('../../bubbleman/NodeBubble')
+const NodeBubble = require('../../bubbleman/NodeBubble');
+
+const exec = require('child_process').exec;
+const execSync = require('child_process').execSync;
 
 let collection = [];
 
@@ -20,7 +23,6 @@ module.exports.Delete = function() {
 
 };
 
-module.exports.
 
 /**
  * Looks throgh saved into json bubbles, restores them and pushes into in-memory collection
