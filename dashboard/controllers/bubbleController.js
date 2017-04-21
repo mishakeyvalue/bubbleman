@@ -9,4 +9,10 @@ module.exports = function(app) {
             NodeBubbles: bubbleService.GetAll()
         });
     })
+
+    app.get('/webhook', function(req, res) {
+        console.log(req.body)
+        res.end();
+    })
+
 };
