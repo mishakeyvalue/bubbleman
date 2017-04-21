@@ -11,7 +11,7 @@ module.exports = function(app) {
     })
 
     app.post('/webhook', function(req, res) {
-        console.log(req.body)
+        // console.log(req.body)
         reloadSelf();
         res.end();
     })
