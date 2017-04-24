@@ -1,6 +1,7 @@
 var http = require("http")
 const express = require('express');
 const bubbleController = require('./controllers/bubbleController');
+const wetty = require('./wetty/app');
 
 
 let app = express();

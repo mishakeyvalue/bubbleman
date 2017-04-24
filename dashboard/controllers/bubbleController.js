@@ -11,7 +11,7 @@ module.exports = function(app) {
     })
 
     app.post('/webhook', function(req, res) {
-        console.log(req.body)
+        // console.log(req.body)
         reloadSelf();
         res.end();
     })
@@ -20,7 +20,7 @@ module.exports = function(app) {
 
 
 let reloadSelf = function() {
-    let command = `git --work-tree=${__dirname} --git-dir=${__dirname}/.git pull origin master`;
+    let command = `git --work-tree=/usr/bubbleman --git-dir=/usr/bubbleman/.git pull origin master`;
     try {
         execSync(command);
     } catch (e) {
