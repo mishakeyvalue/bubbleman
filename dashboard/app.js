@@ -2,6 +2,7 @@ var http        = require("http"),
     terminal    = require("web-terminal");
 const express = require('express');
 const bubbleController = require('./controllers/bubbleController');
+const apiController = require('./controllers/apiController');
     
 
 let app = express();
@@ -15,6 +16,7 @@ app.use('/assets', function(req, res, next) {
 
 //---fire up controllers---
 bubbleController(app);
+apiController(app);
 //---  ---
 app.listen(1337);
 console.log("Server running at http://127.0.0.1:1337/");
