@@ -18,9 +18,19 @@
                                     <%= el.BubbleName %> 
                                 </h3>
                                     <%= el.main %>
-                                    <button type="button" class="btn btn-danger pmd-ripple-effect">down<span class="badge"></span></button>
+                                    <%
+                                        if(true){
+                                            let btn_status = 'success';
+                                            let btn_text = 'working';
+                                        }else{
+                                            let btn_status = 'danger';
+                                            let btn_text = 'down';
+
+                                        }
+                                    %>
+                                    <button type="button" class="btn btn-<%=btn_status%> pmd-ripple-effect"><%=btn_text%><span class="badge"></span></button>
                                 <p>
-                                    <%=  %>
+                                    
                                 </p>
                                 <p>
                                     <a class="btn btn-primary" href="#">Action</a> <a class="btn" href="#">Action</a>

@@ -1,9 +1,13 @@
-var http        = require("http"),
-    terminal    = require("web-terminal");
+var http = require("http")
 const express = require('express');
 const bubbleController = require('./controllers/bubbleController');
+<<<<<<< HEAD
 const apiController = require('./controllers/apiController');
     
+=======
+const wetty = require('./wetty/app');
+
+>>>>>>> 2ec45740164aaa1e8bca2bde4c6855a6daa4021d
 
 let app = express();
 
@@ -20,6 +24,3 @@ apiController(app);
 //---  ---
 app.listen(1337);
 console.log("Server running at http://127.0.0.1:1337/");
-
-
-console.log("Web-terminal accessible at http://127.0.0.1:1337/terminal");
