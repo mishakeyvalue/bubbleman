@@ -6,7 +6,7 @@ module.exports = function(app){
         res.end('200');
 	tootee.reload();
     });
-   app.post('/api/tootee', function(req, res){       
+   app.get('/api/tootee', function(req, res){       
 	console.log(req);
         res.end('200');
 	tootee.reload();
