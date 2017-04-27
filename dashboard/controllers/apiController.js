@@ -11,7 +11,7 @@ module.exports = function(app){
 	execSync(`git --work-tree=${tootee._src} --git-dir=${tootee._src}/../vk-dotnet/.git pull origin master`);
 //	execSync(`dotnet restore ${tootee._src}/`);
 	console.log(`dotnet publish -o ${tootee.production_cage}`)
-        execSync(`dotnet publish -o ${tootee.production_cage}`, {cwd:tootee._src})
+        execSync(`dotnet publish ${tootee._src}/HangBotReborn.csproj -o ${tootee.production_cage}`)
         execSync("systemctl start tootee");
     })
 };
