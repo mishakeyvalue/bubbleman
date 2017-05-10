@@ -13,13 +13,13 @@ module.exports = function(app){
     });
         app.post('/api/botman', function(req, res){       
 //        console.log(req)
-        res.end('200');
-	botman.reload();
+//        res.end('200');
+//	botman.reload();
     });
    app.get('/api/botman', function(req, res){       
 	console.log(req);
-        res.end('200');
-	botman.reload();
+//        res.end('200');
+//	botman.reload();
     });
 };
 
