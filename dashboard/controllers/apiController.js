@@ -21,8 +21,13 @@ module.exports = function(app){
 //        res.end('200');
 //	botman.reload();
     });
+   app.post('/api/woommeewp',woommewpCB);
+   app.get('/api/woommeewp',woommewpCB);
 };
-
+function woommewpCB(req,res){
+	woommee_wp.reload();
+	res.end('200');
+};
 let tootee = {
     _src : "/usr/HangBotReborn/HangBotReborn",
     production_cage : "/var/myw/",
@@ -53,4 +58,13 @@ let botman = {
         execSync("systemctl start botman");
     }
 };
-
+let woommee_wp = {
+    _src : "/var/woommee_wp",
+    reload : function() {
+        execSync("systemctl daemon-reload");
+        execSync("systemctl stop woommee_wp");
+        let command = `git --work-tree=${this._src} --git-dir=${this._src}/.git pull origin master`;
+        execSync(command);
+        execSync("systemctl start woommee_wp");
+    }
+};
