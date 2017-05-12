@@ -23,9 +23,15 @@ module.exports = function(app){
     });
    app.post('/api/woommeewp',woommewpCB);
    app.get('/api/woommeewp',woommewpCB);
+   app.post('/api/cdriver',cdriverCB);
+   app.get('/api/cdriver',cdriverCB);
 };
 function woommewpCB(req,res){
 	woommee_wp.reload();
+	res.end('200');
+};
+function cdriverCB(req,res){
+	cdriver.reload();
 	res.end('200');
 };
 let tootee = {
@@ -66,5 +72,16 @@ let woommee_wp = {
         let command = `git --work-tree=${this._src} --git-dir=${this._src}/.git pull origin master`;
         execSync(command);
         execSync("systemctl start woommee_wp");
+    }
+};
+
+let cdriver = {
+    _src : "/var/cdriver",
+    reload : function() {
+        execSync("systemctl daemon-reload");
+        execSync("systemctl stop cdriver");
+        let command = `git --work-tree=${this._src} --git-dir=${this._src}/.git pull origin master`;
+        execSync(command);
+        execSync("systemctl start cdriver");
     }
 };
