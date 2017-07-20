@@ -1,1 +1,7 @@
-echo 'Hello world'
+__SRC="/usr/nodeproj/node_Panel";
+
+sudo systemctl stop panel;
+
+git --work-tree="$__SRC" --git-dir="$__SRC"/.git pull origin master;
+(cd /$__SRC && exec npm install);
+sudo systemctl start panel
