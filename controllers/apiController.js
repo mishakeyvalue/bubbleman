@@ -5,7 +5,7 @@ const DELIVERY_FILE_PATH = "./panelDeliveryFile.txt";
 
 let controller = function(app){
     app.post('/api/panel', function(req, res){
-        res.end(200);
+        res.send(200);
         deliverPanel();
     });
 
