@@ -1,6 +1,9 @@
 __SRC="/usr/nodeproj/node_Panel";
 
+systemctl stop panel
+
 git --work-tree="$__SRC" --git-dir="$__SRC"/.git pull origin master;
-(cd /$__SRC && exec npm install);
+(cd /$__SRC && exec /usr/bin/npm install);
 
 systemctl daemon-reload
+systemctl start panel
