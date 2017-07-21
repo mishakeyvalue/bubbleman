@@ -1,9 +1,11 @@
 __SRC="/usr/nodeproj/node_Panel";
 
-systemctl stop panel
 
-(cd /$__SRC && exec git fetch --all; git reset --hard origin/master);
-(cd /$__SRC && exec /usr/bin/npm install; /usr/bin/npm start);
+
+cd $__SRC
+git fetch --all;
+git reset --hard origin/master;
+/usr/bin/npm install;
 
 systemctl daemon-reload
 systemctl start panel
